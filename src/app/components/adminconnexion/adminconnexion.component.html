@@ -1,0 +1,26 @@
+<div class="container mt-5">
+    <div class="row justify-content-center" >
+      <div class="col-md-6">
+        <div class="card" style="background-color: black;">
+          <div class="card-body">
+            <h2 style=" color: red;" class="card-title text-center">Administrateur</h2>
+              <div class="mb-3">
+                <label for="email" class="form-label">identifiant</label>
+                <input type="email" class="form-control" id="email" placeholder="" [(ngModel)]="admin.identifiant" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" placeholder="********" [(ngModel)]="admin.password" required>
+              </div>
+              <div class="" style="display: flex; justify-content: space-around;" >
+                <button type="submit" class="btn btn-primary" (click)="connexionAdmin()">Se Connecter</button>
+                <a href="">Mot de passe oublié ?</a>
+              </div>
+          </div>
+        </div>
+        <!-- <div>
+            Vous n'avez pas de compte ? <a href="javascript:void(0)">M'inscrire</a>
+        </div> -->
+      </div>
+    </div>
+  </div>

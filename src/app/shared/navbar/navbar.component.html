@@ -1,0 +1,24 @@
+<div style="background-color:black; color: white; padding: 20px; height: 90px;" class="container-fluid full-width-div fixed-top">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 *ngIf="navigation=='formations' || navigation==''"> Nos Formations </h1>
+            <h1 *ngIf="navigation=='services'"> Nos Services </h1>
+            <h1 *ngIf="navigation=='detailformation'"> {{formationIntitule}} </h1>
+        </div>
+        <div class="col-md-3 d-flex justify-content-end align-items-center" *ngIf="navigation=='formations' || navigation==''">
+            <button type="button" class="btn btn-danger" (click)="serviceUrl()">
+             Nos services
+            </button>
+        </div>
+        <div class="col-md-3 d-flex justify-content-end align-items-center" *ngIf="navigation=='services'">
+            <button type="button" class="btn btn-danger" (click)="formationUrl()" >
+             Nos formations
+            </button>
+        </div>
+        <div class="col-md-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light" >
+              Se connecter
+            </button>
+        </div>
+    </div> 
+  </div>

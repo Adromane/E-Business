@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "genietech-bac84"
+  },
+  "targets": {
+    "genietech-bac84": {
+      "hosting": {
+        "e-business": [
+          "genietech-bac84"
+        ]
+      }
+    }
+  }
+}

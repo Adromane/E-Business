@@ -1,0 +1,441 @@
+<div style="padding: 20px; height: 90px;" class="container-fluid full-width-div">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <img style="width: 100px; height: auto;" src="../../../assets/images/genitechn logo.jpeg" alt="">
+      <h1>GENIETECHN</h1>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid full-width-div  " style="">
+  <!-- Bloc 1: Le bloc par etaut -->
+  <div style="text-align: center; background-color: aliceblue;">
+    <h2>🚀 Transformez Vos Idées en Réalité Digitale avec Nos Services Tout-En-Un! 🚀</h2>
+    <h3 style="color: yellowgreen;">
+      À la recherche de solutions numériques puissantes pour propulser
+      votre entreprise ou votre projet vers de nouveaux sommets? Ne cherchez pas plus loin!
+      Chez GENIETECHN, nous sommes passionnés par la création
+      d'expériences numériques exceptionnelles.
+    </h3>
+  </div>
+
+  <!-- Bloc 2: Du problème vers la solution -->
+  <div style="text-align: center; margin-top: 30px;">
+    <h3>🚫 Évitez les Pièges Courants du Digital! Optez pour une Solution Sûre
+      avec GENIETECHN 🚫
+    </h3>
+
+    <h5 style="color: brown;">
+      Dans le monde digital en constante évolution, il est facile de se perdre dans le labyrinthe des défis techniques.
+      Chez GENIETECHN, nous comprenons les embûches auxquelles vous pourriez être confronté, et nous
+      sommes là pour vous guider vers des solutions sans tracas qui répondent le mieux à vos besoins.
+      Ne laissez pas les obstacles du digital entraver votre succès. Choisissez GENIETECHN pour des
+      solutions fiables et innovantes qui vous propulseront vers l'avant.
+    </h5>
+
+    <!-- <ul>
+      <li> 
+        <h5 style="color: brown;">
+          🔍 Problème 1: Développement Coûteux et Chronophage
+        Le développement d'applications web et mobiles peut rapidement devenir une épreuve financière et temporelle. Les
+        retards et les coûts imprévus sont des cauchemars communs. Avec nous, vous bénéficiez d'une équipe efficace,
+        axée sur les résultats, qui respecte les délais et le budget convenus.
+        </h5>
+      </li>
+      <li> 
+        <h5 style="color: brown;">
+          🔍 Problème 1: Développement Coûteux et Chronophage
+        Le développement d'applications web et mobiles peut rapidement devenir une épreuve financière et temporelle. Les
+        retards et les coûts imprévus sont des cauchemars communs. Avec nous, vous bénéficiez d'une équipe efficace,
+        axée sur les résultats, qui respecte les délais et le budget convenus.
+        </h5>
+      </li>
+    </ul> -->
+
+  </div>
+
+  <!-- Bloc 3:  Nos offres de services -->
+  <div class="row" style="padding: 40px; background-color: aliceblue;">
+    <h2 style="text-align: center;"> 💼 Nos offres de services 💼</h2>
+    <div style="display: flex; justify-content: center;" class="col-md-3" *ngFor="let item of services">
+      <div class="card" style="margin-top: 10px;">
+        <img style="" [src]="item.img" class="card-img-top" alt="Image 1">
+        <div class="card-body">
+          <h5 class="card-title">{{item.intitule}}</h5>
+          <!-- <span class="badge text-bg-warning">à partir de : {{item.prix_base}} XOF</span> -->
+          <!-- <p class="card-text"> {{item.description}} </p> -->
+          <button type="button" class="btn btn-danger" style="background-color: brown;" 
+          data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="commander(item)">
+            En savoir plus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-xl">
+
+        <!-- Les détails de nos offres de services -->
+        <div *ngIf="modalstate === 'details'" class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Offre de service: <strong
+                class="badge text-bg-warning">{{commande.intitule}}</strong>
+              <!-- <span class="badge text-bg-warning"> tarif de base : {{commande.prix_base}} XOF</span> -->
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- Offre de service développement web -->
+          <div *ngIf="commande.intitule === 'Developpement web'" class="modal-body">
+            <ol>
+              <div class="row">
+                <li class="col-md-6">
+                  <h6>🌐 Développement d'Applications Web Personnalisées :</h6>
+                  <ul>
+                    <li><strong>Création d'applications web robustes et évolutives.</strong></li>
+                    <li><strong>Technologies de pointe pour une performance optimale.</strong></li>
+                    <li><strong>Solutions sur mesure adaptées à vos besoins spécifiques.</strong></li>
+                  </ul>
+                </li>
+                <li class="col-md-6">
+                  <h6>💡 Conception et Refonte de Sites Web :</h6>
+                  <ul>
+                    <li><strong>Création de sites web modernes et esthétiques.</strong></li>
+                    <li><strong>Révision complète de sites existants pour une image de marque renforcée.</strong></li>
+                    <!-- <li><strong>Intégration de designs responsifs pour une expérience utilisateur optimale.</strong></li> -->
+                  </ul>
+                </li>
+              </div>
+
+              <div class="row" style="margin-top: 20px;">
+                <li class="col-md-6">
+                  <h6>🔄 Mise en Place de Systèmes de Gestion de Contenu (CMS) :</h6>
+                  <ul>
+                    <li><strong>Utilisation de CMS populaires tels que WordPress, Drupal, et Joomla.</strong></li>
+                    <li><strong>Formation et support pour une gestion de contenu autonome.</strong></li>
+
+                  </ul>
+                </li>
+                <li class="col-md-6">
+                  <h6>🔒 Sécurité et Performances :</h6>
+                  <ul>
+                    <li><strong>Intégration de protocoles de sécurité avancés.</strong></li>
+                    <li><strong>Optimisation des performances pour des chargements rapides.</strong></li>
+                  </ul>
+                </li>
+              </div>
+
+              <div style=" display: flex; justify-content: center; margin-top: 20px;">
+                <li>
+                  <h6>📊 Analyse et Suivi :</h6>
+                  <ul>
+                    <li><strong>Intégration d'outils d'analyse pour comprendre le comportement des
+                        utilisateurs.</strong></li>
+                    <li><strong>Suivi des performances et ajustements continus pour maximiser les résultats.</strong>
+                    </li>
+                  </ul>
+                </li>
+              </div>
+            </ol>
+          </div>
+          <!-- Offre de service développement mobile -->
+          <div *ngIf="commande.intitule === 'Developpement mobile'" class="modal-body">
+            <ol>
+              <div class="row">
+                <li class="col-md-6">
+                  <h6>📱 Développement Multiplateforme:</h6>
+                  <strong>
+                    Nous maîtrisons le développement d'applications mobiles natives pour iOS et Android,
+                    garantissant une expérience utilisateur homogène sur toutes les plateformes.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🎨 Design Intuitif et Moderne:</h6>
+                  <strong>
+                    Des interfaces utilisateur attrayantes et fonctionnelles qui captivent vos utilisateurs
+                    dès la première interaction, renforçant ainsi l'image de votre marque.
+                  </strong>
+                </li>
+              </div>
+              <div class="row" style="margin-top: 20px;">
+                <li class="col-md-6">
+                  <h6>⚙️ Fonctionnalités Avancées:</h6>
+                  <strong>
+                    Intégration de fonctionnalités avancées telles que la géolocalisation, les notifications
+                    push, le paiement sécurisé, et bien plus encore, pour rendre votre application unique.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🧪 Tests Approfondis:</h6>
+                  <strong>
+                    Des phases de test rigoureuses pour assurer la stabilité, la sécurité et la performance
+                    optimale de votre application sur divers appareils et conditions réseau.
+                  </strong>
+                </li>
+              </div>
+              <div style=" display: flex; justify-content: center; margin-top: 20px;">
+                <li>
+                  <h6>🔄 Mises à Jour et Support Continus:</h6>
+                  <p>
+                    <strong>
+                      Nous restons engagés même après le lancement, fournissant des mises à jour régulières
+                      et un support continu pour garantir que votre application reste à la pointe.
+                    </strong>
+                  </p>
+                </li>
+              </div>
+            </ol>
+          </div>
+          <!-- Offre de service marketing digital -->
+          <div *ngIf="commande.intitule === 'Marketing digital'" class="modal-body">
+            <ol>
+              <div class="row">
+                <li class="col-md-6">
+                  <h6>🎯 Stratégie de Marketing Digital :</h6>
+                  <strong>
+                    Développement d'une stratégie sur mesure alignée sur vos objectifs commerciaux. Cela inclut la
+                    définition d'un public cible, la sélection des canaux de marketing appropriés, et la planification
+                    des campagnes.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🔍 Optimisation des Moteurs de Recherche (SEO) :</h6>
+                  <strong>
+                    Mise en œuvre de techniques avancées d'optimisation pour améliorer votre classement sur les moteurs de recherche, augmentant ainsi la visibilité organique de votre site web.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>📱 Gestion des Médias Sociaux :</h6>
+                  <strong>
+                    Création et gestion de contenu engageant sur les plateformes sociales pertinentes. Suivi des performances, interaction avec la communauté, et augmentation de la visibilité de la marque.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>💡 Publicités Payantes (SEM) :</h6>
+                  <strong>
+                    Création et gestion de campagnes publicitaires payantes sur Google Ads, Facebook, Instagram, et d'autres plateformes. Suivi continu des performances et ajustements pour maximiser le retour sur investissement.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>📧 E-mail Marketing :</h6>
+                  <strong>
+                    Développement et mise en œuvre de campagnes d'e-mail marketing efficaces pour engager votre public, augmenter la fidélité des clients, et générer des conversions.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>✍️ Contenu de Qualité :</h6>
+                  <strong>
+                    Création de contenu de qualité adapté à votre public cible pour renforcer votre positionnement en tant qu'autorité dans votre secteur d'activité.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>📈 Analyse de Données et Rapports :</h6>
+                  <strong>
+                    Utilisation d'outils analytiques avancés pour suivre les performances de chaque campagne. Présentation de rapports réguliers détaillant les résultats et proposant des recommandations pour l'optimisation continue.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🤓 Formation et Conseils :</h6>
+                  <strong>
+                    Formation de votre équipe sur les meilleures pratiques du marketing digital. Conseils stratégiques pour que vous soyez en mesure de prendre des décisions éclairées.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🌐 Gestion de la Réputation en Ligne :</h6>
+                  <strong>
+                    Surveillance et gestion proactive de votre réputation en ligne pour assurer une image positive de votre entreprise.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🔄 Évolution Continue :</h6>
+                  <strong>
+                    Notre engagement envers votre succès ne s'arrête pas à la livraison du projet. Nous travaillerons en étroite collaboration avec vous pour nous assurer que nos stratégies évoluent en fonction de vos besoins changeants et des tendances du marché.
+                  </strong>
+                </li>
+              </div>
+            </ol>
+          </div>
+          <!-- Offre de service tunnel de vente -->
+          <div *ngIf="commande.intitule === 'Tunnel de vente'" class="modal-body">
+            <ol>
+              <div class="row">
+                <li class="col-md-6">
+                  <h6>📊 Analyse Approfondie des Besoins:</h6>
+                  <strong>
+                    Évaluation détaillée de vos objectifs commerciaux, de votre public cible et des points clés du
+                    parcours client pour concevoir un tunnel de vente personnalisé.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🛠️ Conception et Mise en Place du Tunnel:</h6>
+                  <strong>
+                    Création d'un tunnel de vente optimisé, comprenant des pages de capture, des pages de vente, des
+                    pages de confirmation et d'autres éléments essentiels pour guider vos clients tout au long du
+                    processus.
+                  </strong>
+                </li>
+              </div>
+              <div class="row" style="margin-top: 20px;">
+                <li class="col-md-6">
+                  <h6>🎨 Design Convaincant:</h6>
+                  <strong>
+                    Conception de visuels percutants et d'une interface utilisateur attractive pour améliorer
+                    l'expérience globale et renforcer la confiance de vos prospects.
+                  </strong>
+                </li>
+                <li class="col-md-6">
+                  <h6>🔄 Automatisation et Intégration:</h6>
+                  <strong>
+                    Mise en place d'automatisations pour simplifier les processus, y compris l'intégration de systèmes
+                    CRM et d'outils marketing pour maximiser l'efficacité.
+                  </strong>
+                </li>
+              </div>
+              <div style=" display: flex; justify-content: center; margin-top: 20px;">
+                <li>
+                  <h6>📈 Analyse des Performances:</h6>
+                  <p>
+                    <strong>
+                      Suivi régulier des performances du tunnel de vente, avec des rapports détaillés et des ajustements
+                      continus pour optimiser les taux de conversion.
+                    </strong>
+                  </p>
+                </li>
+              </div>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <div class="alert alert-warning" role="alert" *ngIf="commande.intitule !=='Graphisme' ">
+              Vous pouvez prendre contact et discuter avec nous <strong>GRATUITEMENT</strong> sur vos besoins
+            </div>
+            <button type="button" class="btn btn-danger" *ngIf="commande.intitule !=='Graphisme' "
+              (click)="modalstate='commande'">Prendre contact pour ce service</button>
+          </div>
+        </div>
+
+
+
+
+        <!-- Formulaire de prise de contact pour une offres de services -->
+        <div *ngIf="modalstate ==='commande'" class="modal-content">
+          <div class="alert alert-success" role="alert" *ngIf="valider === 'oui'" (click)="valider = ''">
+            Votre commande à été enregistrer et nous vous recontactons très vite !!!
+            <br> Merci pour la confiance
+          </div>
+          <div class="alert alert-danger" role="alert" *ngIf="valider === 'non'">
+            Votre commande n'as pas été enregistrer, veuillez réssayer !!!
+          </div>
+          <div class="alert alert-warning" role="alert" *ngIf="valider === 'manquant'">
+            Renseigner tous les champs avant de terminer la commande!!!
+          </div>
+          <div class="modal-header" style="">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Formulaire de commande: <strong
+                class="badge text-bg-warning">{{commande.intitule}}
+              </strong>
+              <!-- <span class="badge text-bg-warning"> tarif de base : {{commande.prix_base}} XOF</span> -->
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+              (click)="modalstate='details'; valider=''"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"><strong>Prenoms et NOM:</strong></label>
+              <input type="text" class="form-control" id="recipient-name" [(ngModel)]="commande.client">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"><strong>Email</strong>:</label>
+                  <input type="email" class="form-control" id="recipient-name" [(ngModel)]="commande.email">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"><strong>Numéro whatapps:</strong></label>
+                  <input type="tel" class="form-control" id="recipient-name" [(ngModel)]="commande.numero"
+                    placeholder="+22996620065">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label"><strong>Description de votre besoin:</strong></label>
+                  <textarea class="form-control" id="message-text" [(ngModel)]="commande.description_besoin"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label"><strong>Comment pouvons nous vous recontacter
+                      ?:</strong></label>
+                  <select class="form-select form-select-lg mb-3" aria-label="Large select example"
+                    [(ngModel)]="commande.moyen_relance">
+                    <option value="mails"> Envoyez moi un mails </option>
+                    <option value="whatapps">Discutons par whatapps</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button *ngIf="valider==='' || valider === 'non' || valider === 'manquant'" type="button"
+              class="btn btn-secondary" data-bs-dismiss="modal" (click)="modalstate='details'">Annuler</button>
+            <button *ngIf="valider==='' || valider === 'non' || valider === 'manquant'" type="button"
+              class="btn btn-danger" (click)="validerCommande()">Envoyez</button>
+            <button *ngIf="valider==='en_attente'" type="button" class="btn btn-danger" disabled>Envoyez</button>
+            <button *ngIf="valider==='oui'" type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+              (click)="valider = ''; modalstate= 'details' ">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bloc 4: Nos Garantit -->
+  <div style="padding: 20px;">
+    <h2 style="text-align: center;"> 🌟 Garantie de Satisfaction Totale 🌟</h2>
+    <h5>Chez GENIETECHN, nous sommes déterminés à fournir des services de la plus haute qualité, et nous
+      sommes convaincus que notre engagement envers l'excellence se traduira par votre satisfaction totale. C'est
+      pourquoi nous offrons une garantie de satisfaction pour tous nos services.</h5>
+    <div>
+      <ol>
+        <div class="row">
+          <li class="col-md-6">
+            <h6>✔️ Qualité Inégalée:</h6>
+            <strong>Nous nous engageons à fournir des services qui répondent aux normes les plus élevées de l'industrie.
+              Si, pour une raison quelconque, vous n'êtes pas entièrement satisfait de la qualité de notre travail, nous
+              ferons les ajustements nécessaires jusqu'à ce que vous soyez pleinement satisfait.
+            </strong>
+          </li>
+          <li class="col-md-6">
+            <h6>🕒 Respect des Délais:</h6>
+            <strong>Nous comprenons l'importance du temps dans vos projets. Nous garantissons le respect des délais
+              convenus. En cas de retard injustifié, des mesures correctives seront mises en place, et le problème sera
+              résolu avec diligence.
+            </strong>
+          </li>
+        </div>
+        <li>
+          <h6>🔄 Révisions Illimitées:</h6>
+          <strong>Votre satisfaction est notre priorité. Nous offrons des révisions illimitées pour nous assurer que le
+            produit final correspond parfaitement à vos attentes. Notre équipe travaillera avec vous de manière
+            collaborative pour répondre à vos besoins spécifiques.
+          </strong>
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <h3>BESOIN D'AIDE ?</h3>
+  <h4>Pour toutes vos questions, vous pouvez nous envoyer un email à <a href="mailto:genietechn560@gmail.com"
+      style="color:black;">genietechn560@gmail.com</a></h4>
+</div>
+
+<footer style="background-color: #333; color: #fff; padding: 20px; text-align: center; bottom: 0;
+width: 100%;">
+  <p>&copy; 2023 GENIETECHN. Tous droits réservés.</p>
+</footer>

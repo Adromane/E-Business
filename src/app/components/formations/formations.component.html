@@ -1,0 +1,43 @@
+<div style="background-color:black; color: white; padding: 20px; height: 90px;" class="container-fluid full-width-div fixed-top">
+  <div class="row">
+      <div class="col-md-6">
+          <!-- <h1> Nos formations  </h1> -->
+          
+      </div>
+      
+      <div class="col-md-3 d-flex justify-content-end align-items-center">
+          <!-- <button type="button" class="btn btn-danger" routerLink="/services">
+            Nos Services
+          </button> -->
+      </div>
+      <div class="col-md-3 d-flex justify-content-end align-items-center">
+          <button type="button" class="btn btn-light" >
+            Se connecter
+          </button>
+      </div>
+  </div> 
+</div>
+
+<div class="container-fluid full-width-div" style="margin-top: 100px;">
+    <div class="container mt-5">
+        <div class="row" style="margin-top: 10px;"  *ngFor="let item of formations ">
+          <!-- Première image et texte -->
+          <div class="col-md-6">
+            <img src="../../../assets/images/cybersecurity-web.jpg" class="img-fluid" alt="Image 1">
+          </div>
+          <div class="col-md-6">
+            <span class="badge text-bg-warning">Prix : {{item.prix}} XOF</span>
+            <!-- <p style="color: brown;">Prix : 100000 XOF</p> -->
+            <h3>{{item.intitule}}</h3>
+            <p>
+              {{item.description}}
+            </p>
+            <button type="button" class="btn btn-danger" style="background-color: brown;" [routerLink]="['/formation', item.intitule]" (click)="detailFormation(item)">
+                Accéder à la formation
+            </button>
+          </div>
+        </div>
+    
+      </div>
+      
+</div>

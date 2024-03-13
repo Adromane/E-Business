@@ -1,0 +1,116 @@
+<!-- <div  class="container-fluid full-width-div" style="margin-top: 100px;">
+    <div class="card" style="margin-left: 20px; margin-right: 20px;">
+        <img src="../../../assets/images/cybersecurity-web.jpg" alt="..." class="card-img-top" style="height: 300px;" >
+        <div class="card-body">
+         
+        </div>
+      </div>
+</div> -->
+<div style="background-color:black; color: white; padding: 20px; height: 90px;" class="container-fluid full-width-div fixed-top">
+    <div class="row">
+        <div class="col-md-6">
+         
+        </div>
+        
+        <div class="col-md-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-danger">
+              Accéder pour {{formation.prix}} XOF
+            </button>
+        </div>
+        <div class="col-md-3 d-flex justify-content-end align-items-center">
+            <button type="button" class="btn btn-light" >
+              Se connecter
+            </button>
+        </div>
+    </div> 
+  </div>
+
+<div style="background-color:aliceblue; color: black; padding: 20px; margin-top: 90px;" class="container-fluid full-width-div">
+    <div class="row">
+        <div class="col-md-6">
+          <h3> {{formation.intitule}} </h3>
+          <!-- <ul>
+            <li><strong style="color: rgb(225, 78, 78);">Avantage 1</strong></li>
+            <li><strong style="color:  rgb(225, 78, 78);">Avantage 2</strong></li>
+            <li><strong style="color:  rgb(225, 78, 78);">Avantage 3</strong></li>
+            <li><strong style="color:  rgb(225, 78, 78);">Avantage 4</strong></li>
+            <li><strong style="color:  rgb(225, 78, 78);">Avantage 5</strong></li>
+          </ul> -->
+          <ul>
+            <li><h6 style="">Comprenez le fonctionnement du web</h6></li>
+            <li><h6 style="">Apprenez comment anlyser un site web</h6></li>
+            <li><h6 style="">Introduisez vous dans un systeme pour tester la sécurité</h6></li>
+            <li><h6 style="">Récupérer des données</h6></li>
+            <li><h6 style="">Effacer vos traces</h6></li>
+          </ul>
+
+          <p><span style="text-decoration: underline;">BONUS:</span><strong> En achetant cette formation vous aurez en bonus accès à une vidéo gratuite  qui vous montre comment trouver des clients avec internet qui ont besoin de ce genre de compétences.</strong></p>
+        
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-end">
+            <img src="../../../assets/images/cybersecurity-web.jpg" alt="..."  style="height: 300px; width: 400px; object-fit: cover;" >
+        </div>
+    </div> 
+  </div>
+
+  <div class="container" style="margin-top: 10px;">
+    <div class="" style="text-align: center;">
+      <h3>Contenu de la formation</h3>
+    </div>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              Module1 #1
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              <div class="row" *ngFor="let video of [1,2,3,4,5,6]">
+                <div class="col-md-6">
+                  <video  width="540" height="260" controls>
+                    <source src="../../../assets/videos/173137 (540p).mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de la vidéo.
+                  </video>
+                  <!-- <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. -->
+                </div>
+                <div class="col-md-6 ">
+                  <div>
+                    <h4>html, css, js</h4>
+                    <p>
+                      La formation s’intitule développement & hacking éthique du web et est organisée par le GENIETECHN. Elle à pour objectifs de donner aux participants des compétences concrètes en développement web. Elle se différencie des autres formations par l’accent mis sur les aspects de sécurité (ou hacking éthique) du web.
+
+                    </p>
+                  </div>
+                </div>
+            </div> 
+             
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              Module2 #2
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              Module3 #3
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>

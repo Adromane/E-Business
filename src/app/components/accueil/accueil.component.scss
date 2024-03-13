@@ -1,0 +1,56 @@
+.bouton {
+    background-color: #4CAF50; /* Couleur de fond */
+    border: none;
+    color: white; /* Couleur du texte */
+    padding: 15px 32px; /* Espacement à l'intérieur du bouton */
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre légère */
+    animation: glow 2s ease-in-out infinite alternate; /* Animation de l'effet fluorescent */
+}
+
+@keyframes glow {
+    from {
+        background-color: #4CAF50; /* Couleur de fond de départ */
+        box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50, 0 0 30px #4CAF50; /* Ombre fluorescente */
+    }
+    to {
+        background-color: #45a049; /* Couleur de fond finale */
+        box-shadow: 0 0 20px #45a049, 0 0 30px #45a049, 0 0 40px #45a049; /* Ombre fluorescente */
+    }
+}
+
+
+.background {
+    background: linear-gradient(135deg, #f0f8ff , #87CEEB); /* Dégradé de couleurs */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite; /* Animation du dégradé */
+    // min-height: 100vh; /* Hauteur minimale de l'arrière-plan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // color: white; /* Couleur du texte */
+}
+
+@keyframes gradientAnimation {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+
+.desktop-only {
+    display: none; /* Masquer le contenu par défaut */
+}
+
+/* Media query pour les écrans de bureau */
+@media screen and (min-width: 768px) {
+    .desktop-only {
+        display: block; /* Afficher le contenu sur les écrans de bureau */
+    }
+}

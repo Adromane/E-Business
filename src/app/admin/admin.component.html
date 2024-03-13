@@ -1,0 +1,651 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+  <div class="container-fluid">
+    <img style="height: 70px; width: 100px;" src="../../assets/images/genitechn logo.jpeg" alt="">
+    <a class="navbar-brand" href="#">ADMIN GENITECHN</a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Menu services -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0   col-md-6 mx-auto" *ngIf="menu==='services'">
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" disabled  >SERVICES</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link"  (click)="menu='formations'">FORMATIONS</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link"  (click)="menu='prospections'">PROSPECTIONS</button>
+        </li>
+      </ul>
+      <!-- Menu formations -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0   col-md-6 mx-auto" *ngIf="menu==='formations'">
+        <li class="nav-item">
+          <button type="button" class="btn btn-link"  (click)="menu='services'">SERVICES</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" disabled>FORMATIONS</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link"  (click)="menu='prospections'">PROSPECTIONS</button>
+        </li>
+      </ul>
+      <!-- Menu prospections -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0   col-md-6 mx-auto" *ngIf="menu==='prospections'">
+        <li class="nav-item">
+          <button type="button" class="btn btn-link"  (click)="menu='services'">SERVICES</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" (click)="menu='formations'">FORMATIONS</button>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-link" disabled >PROSPECTIONS</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Espace des formations -->
+    <div class="container-fluid" *ngIf="menu==='formations'" style="margin-top: 40px;">
+      <button class="btn btn-success" style="margin-left: 85%;" data-bs-toggle="modal" data-bs-target="#ajouterformation">Nouvelle formation</button>
+      <h5>Nos formations</h5>
+      <div class="row" style="padding: 20px;">
+        <div class="card" style="width: 18rem; margin-right: 10px; margin-bottom: 10px; background-color: aliceblue;" *ngFor="let item of tab_formation"  type="button">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-8">
+                <h5 class="card-title"> {{item.titre}} </h5>
+              </div>
+              <div class="col-md-4">
+                <span class="badge text-bg-danger" *ngIf="item.statut === 'indisponible'">indisponible</span>
+                <span class="badge text-bg-success" *ngIf="item.statut === 'disponible'">disponible</span>
+              </div>
+            </div>
+            <div>
+              <p class="card-text"> {{item.description}} </p>
+            </div>
+            <div style="display: flex; justify-content: end; margin-top: 20px;">
+              <!-- <a href="javascript:void(0)" class="btn btn-outline-primary">Détails</a> -->
+              <a href="javascript:void(0)" class="btn btn-outline-warning" data-bs-toggle="modal"
+               data-bs-target="#configformation" (click)="openConfigFormation(item)">
+               <i class="bi bi-gear-wide-connected">
+               </i>Config
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Espace des prospections -->
+    <div class="container-fluid" *ngIf="menu==='prospections'">
+      <div style="margin-top: 40px;">
+        <div>
+          <div style=" margin-left: 85%;">
+            <div class="dropdown">
+              <button (click)="dropdown1=!dropdown1" class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions genéral
+              </button>
+              <ul class="dropdown-menu show" *ngIf="dropdown1===true">
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="dropdown1=!dropdown1" data-bs-toggle="modal" data-bs-target="#ajouterprospect">Ajouter un prospect</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="dropdown1=!dropdown1" data-bs-toggle="modal" data-bs-target="#campagnemail">Envoie de mails groupé</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="dropdown1=!dropdown1">Something else here</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="javascript:void(0);" (click)="dropdown1=!dropdown1">ANNULER</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div>
+            <h5>Liste des prospects</h5>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <!-- <th scope="col">#</th> -->
+                <th scope="col">catégorie</th>
+                <th scope="col">Prospect</th>
+                <th scope="col">Numéro</th>
+                <th scope="col">Mail</th>
+                <th scope="col">Date d'ajout</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of [1,2]">
+                <!-- <th scope="row">1</th> -->
+                <td>categorie</td>
+                <td>prospect</td>
+                <td>numero</td>
+                <td>email</td>
+                <td>date</td>
+                <td>
+                
+              
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    </div>
+
+  <!-- Espace des services -->
+    <div class="container-fluid" style="" *ngIf="menu==='services'">
+            <div style="margin-top: 40px;">
+                <div>
+                    <h5>Liste des commandes pour nos services</h5>
+                </div>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Moyen de relance</th>
+                        <th scope="col">Numéro</th>
+                        <th scope="col">Mails</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of commandes">
+                        <th scope="row">1</th>
+                        <td> {{item.client}} </td>
+                        <td>{{item.intitule}}</td>
+                        <td>{{item.moyen_relance}}</td>
+                        <td>{{item.numero}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{ item.date | date:'EEEE d MMMM yyyy HH:mm:ss':'':'fr' }}</td>
+                        <td>
+                        
+                      
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+    </div>
+
+<!-- modal pour ajouter de new prospects -->
+    <div class="modal fade" id="ajouterprospect" role="dialog" tabindex="-1" aria-labelledby="ajouterprospect" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Ajouter un nouveaux prospect</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"><strong>Prenoms et NOM:</strong></label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"><strong>Email</strong>:</label>
+                  <input type="email" class="form-control" id="recipient-name" >
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"><strong>Numéro whatapps:</strong></label>
+                  <input type="tel" class="form-control" id="recipient-name"
+                    placeholder="+22996620065">
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label"><strong>Description de votre besoin:</strong></label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label"><strong>Comment pouvons nous vous recontacter
+                      ?:</strong></label>
+                  <select class="form-select form-select-lg mb-3" aria-label="Large select example"
+                    >
+                    <option value="mails"> Envoyez moi un mails </option>
+                    <option value="whatapps">Discutons par whatapps</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger">Confirmer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- modal pour campagne mails -->
+<div class="modal fade" id="campagnemail" role="dialog" tabindex="-1" aria-labelledby="campagnemail" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Envoie d'email groupé</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal pour ajouter une nouvelle formation -->
+<div class="modal fade" id="ajouterformation" role="dialog" tabindex="-1" aria-labelledby="ajouterformation" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter une nouvelle formation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="background-color:aliceblue;">
+        <div class="mb-3">
+          <label for="recipient-name" class="col-form-label"><strong>Titre de la formation:</strong></label>
+          <input type="text" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.titre">
+        </div>
+        <div class="mb-3">
+          <label for="message-text" class="col-form-label"><strong>Description de la formation :</strong></label>
+          <textarea class="form-control" id="message-text" [(ngModel)]="nouvelle_formation.description"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"><strong>Formateur/instructeur </strong>:</label>
+              <select class="form-select form-select-lg mb-3" aria-label="Large select example" [(ngModel)]="nouvelle_formation.formateur">
+                <option value="null">Selectionner un formateur</option>
+                <option value="DENON STEVE">DENON STEVE</option>
+                <option value="BANGO PEDRO">BANGO PEDRO</option>
+                <option value="OTCHE EULOGE">OTCHE EULOGE</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label"><strong>Niveau de difficulté</strong></label>
+              <select class="form-select form-select-lg mb-3" aria-label="Large select example" [(ngModel)]="nouvelle_formation.niveau_difficulte"
+                >
+                <option value="debutant">débutant</option>
+                <option value="intermediaire">intermédiaire</option>
+                <option value="avance">avancé</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"><strong>Durée de la formation</strong>:</label>
+              <input type="time" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.duree">
+            </div>
+          </div>
+        </div>
+        <!-- section module -->
+        <div style="background-color: white; padding: 10px;">
+            <div>
+              <div class="mb-3">
+                <label for="recipient-name" class="col-form-label"><strong>Modules:</strong></label>
+                <div class="row">
+                  <div class="col-md-9">
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.module">
+                  </div>
+                  <div class="col-md-3">
+                    <button class="btn btn-primary" (click)="ajouterModule()" *ngIf="nouvelle_formation.module !== ''">Ajouter</button>
+                    <button class="btn btn-primary" disabled *ngIf="nouvelle_formation.module === ''">Ajouter</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <div *ngIf="modules.length > 0">
+            <div *ngFor="let item of modules, let i = index">
+              <strong>Module {{i + 1}}: {{item}}</strong>  <button class="btn btn-close" (click)="deleteModule(i)"></button>
+            </div>
+          </div>
+          <div *ngIf="modules.length === 0">
+            <span>AUCUN MODULE AJOUTER</span>
+          </div>
+        </div>
+         <!-- section Prérequis -->
+         <div style="background-color: white; padding: 10px; margin-top: 10px;">
+          <div>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"><strong>Prérequis:</strong></label>
+              <div class="row">
+                <div class="col-md-9">
+                  <input type="text" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.prerequi">
+                </div>
+                <div class="col-md-3">
+                  <button class="btn btn-primary" (click)="ajouterPrerequi()" *ngIf="nouvelle_formation.prerequi !== ''">Ajouter</button>
+                  <button class="btn btn-primary" disabled *ngIf="nouvelle_formation.prerequi === ''">Ajouter</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="prerequis.length > 0">
+            <div *ngFor="let item of prerequis, let i = index">
+              <strong>Prérequi {{i + 1}}: {{item}}</strong>  <button class="btn btn-close" (click)="deletePrerequi(i)"></button>
+            </div>
+          </div>
+          <div *ngIf="prerequis.length === 0">
+            <span>AUCUN PREREQUI AJOUTER</span>
+          </div>
+      </div>
+      <!-- section Objectifs d'apprentissage et Matériel pédagogique -->
+        <div class="row" style="margin-top: 10px;">
+          <!-- section Objectifs d'apprentissage -->
+          <div class="col-md-6">
+            <div style="background-color: white; padding: 10px; margin-top: 10px;">
+              <div>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label"><strong>Objectifs d'apprentissage:</strong></label>
+                  <div class="row">
+                    <div class="col-md-9">
+                      <input type="text" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.objectif">
+                    </div>
+                    <div class="col-md-3">
+                      <button class="btn btn-primary" (click)="ajouterObjectif()" *ngIf="nouvelle_formation.objectif !== ''">Ajouter</button>
+                      <button class="btn btn-primary" disabled *ngIf="nouvelle_formation.objectif === ''">Ajouter</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="objectifs.length > 0">
+                <div *ngFor="let item of objectifs, let i = index">
+                  <strong>Objectif {{i + 1}}: {{item}}</strong>  <button class="btn btn-close" (click)="deleteObjectif(i)"></button>
+                </div>
+              </div>
+              <div *ngIf="objectifs.length === 0">
+                <span>AUCUN OBJECTIF AJOUTER</span>
+              </div>
+          </div>
+          </div>
+          <!-- Matériel pédagogique -->
+          <div class="col-md-6">
+              <div style="background-color: white; padding: 10px; margin-top: 10px;">
+                <div>
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label"><strong>Matériel pédagogique:</strong></label>
+                    <div class="row">
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.materiel">
+                      </div>
+                      <div class="col-md-3">
+                        <button class="btn btn-primary" (click)="ajouterMateriel()" *ngIf="nouvelle_formation.materiel !== ''">Ajouter</button>
+                      <button class="btn btn-primary" disabled *ngIf="nouvelle_formation.materiel === ''">Ajouter</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="materiels.length > 0">
+                  <div *ngFor="let item of materiels, let i = index">
+                    <strong>Materiels {{i + 1}}: {{item}}</strong>  <button class="btn btn-close" (click)="deleteMateriel(i)"></button>
+                  </div>
+                </div>
+                <div *ngIf="materiels.length === 0">
+                  <span>AUCUN MATERIEL AJOUTER</span>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- section certificat, coût et support technique -->
+        <div class="row" style="margin-top: 10px;">
+          <!-- section certificat -->
+          <div class="col-md-4">
+            <div class="mb-3">
+              <div style="background-color: white; padding: 10px;">
+                <label for="message-text" class="col-form-label"><strong>Certificat</strong></label>
+                <select class="form-select form-select-lg mb-3" aria-label="Large select example" [(ngModel)]="nouvelle_formation.certificat"
+                  >
+                  <option value="false">Obtentir un certificat ?</option>
+                  <option value="false">NON</option>
+                  <option value="true">OUI</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- section coût -->
+          <div class="col-md-4">
+            <div class="mb-3">
+              <div style="background-color: white; padding: 10px;">
+                <label for="message-text" class="col-form-label"><strong>Coût de la formation  </strong><span class="badge text-bg-warning">en Franc CFA (XOF)</span></label>
+                <input type="text" class="form-control" id="recipient-name" [(ngModel)]="nouvelle_formation.tarif">
+              </div>
+            </div>
+          </div>
+          <!-- section support technique -->
+          <div class="col-md-4">
+           <div class="mb-3">
+              <div style="background-color: white; padding: 10px;">
+                <label for="message-text" class="col-form-label"><strong>Support technique  </strong></label>
+                <textarea class="form-control" id="message-text" [(ngModel)]="nouvelle_formation.support_technique"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  (click)="ajoutFormation()" data-bs-dismiss="modal">terminer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal pour configurer une formation -->
+<div class="modal fade" id="configformation" role="dialog" tabindex="-1" aria-labelledby="campagnemail" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Configuration formation: <strong>{{' '+details_formation.titre}}</strong> </h5>
+        <div *ngIf="menuconfig==='info_general'" style="margin-left: 30%;" class="btn-group" role="group" aria-label="Basic mixed styles example">
+          <button (click)="updateformation = !updateformation" type="button" class="btn btn-secondary" title="modification"><i class="bi bi-pencil-square"></i></button>
+          <button (click)="StatutSet()" *ngIf="details_formation.statut === 'indisponible'" type="button" class="btn btn-success" title="activation"><i class="bi bi-eye"></i></button>
+          <button (click)="StatutSet()" *ngIf="details_formation.statut === 'disponible'" type="button" class="btn btn-warning" title="désactivation"><i class="bi bi-eye-slash"></i></button>
+          <button type="button" class="btn btn-danger" title="supprimer la formation"><i class="bi bi-archive"></i></button>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div style="display: flex; justify-content: end;">
+          <button *ngIf="menuconfig !=='info_general'" type="button" class="btn btn-link" (click)="menuconfig='info_general'">Infos general</button>
+          <!-- <button *ngIf="menuconfig !=='module'" type="button" class="btn btn-link" (click)="menuconfig='module'">Modules</button> -->
+          <button *ngIf="menuconfig !=='cours'" type="button" class="btn btn-link" (click)="menuconfig='cours'">Cours</button>
+        </div>
+        <!-- Bloc Infos générale -->
+        <div style="background-color: aliceblue;padding: 20px;" *ngIf="menuconfig==='info_general'">
+          <div style="text-align: center;">
+            <h4>Informations géneral</h4>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Titre Formation:  </strong></label>
+               <input *ngIf="updateformation" class="form-control" id="recipient-name" style="width: 50%;" [(ngModel)]="details_formation.titre"  (keydown.enter)="onKeyPress($event, 'titre')"> 
+              <span *ngIf="!updateformation">{{' '+details_formation.titre}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Description:  </strong></label>
+              <input *ngIf="updateformation" class="form-control" id="recipient-name" style="width: 50%;" [(ngModel)]="details_formation.description"  (keydown.enter)="onKeyPress($event, 'description')">
+              <span *ngIf="!updateformation">{{' '+details_formation.description}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Formateur:  </strong></label>
+              <select *ngIf="updateformation" class="form-select form-select-lg mb-3" aria-label="Large select example" style="width: 50%;" [(ngModel)]="details_formation.formateur" (keydown.enter)="onKeyPress($event, 'formateur')">
+                <option value="null">Selectionner un formateur</option>
+                <option value="DENON STEVE">DENON STEVE</option>
+                <option value="BANGO PEDRO">BANGO PEDRO</option>
+                <option value="OTCHE EULOGE">OTCHE EULOGE</option>
+              </select>
+              <span *ngIf="!updateformation">{{' '+details_formation.formateur}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Durée:  </strong></label>
+              <input *ngIf="updateformation" type="time" class="form-control" id="recipient-name" style="width: 50%;" [(ngModel)]="details_formation.duree" (keydown.enter)="onKeyPress($event, 'duree')">
+              <span *ngIf="!updateformation">{{' '+details_formation.duree}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>niveau_difficulte:  </strong></label>
+              <select *ngIf="updateformation" class="form-select form-select-lg mb-3" aria-label="Large select example" style="width: 50%;" [(ngModel)]="details_formation.niveau_difficulte" (keydown.enter)="onKeyPress($event, 'niveau_difficulte')"
+                >
+                <option value="debutant">débutant</option>
+                <option value="intermediaire">intermédiaire</option>
+                <option value="avance">avancé</option>
+              </select>
+              <span *ngIf="!updateformation">{{' '+details_formation.niveau_difficulte}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Certificat:  </strong></label>
+              <select *ngIf="updateformation" class="form-select form-select-lg mb-3" aria-label="Large select example" style="width: 50%;" [(ngModel)]="details_formation.certificat" (keydown.enter)="onKeyPress($event, 'certificat')"
+              >
+              <option value="false">Obtentir un certificat ?</option>
+              <option value="false">NON</option>
+              <option value="true">OUI</option>
+            </select>
+              <span *ngIf="!updateformation">{{' '+details_formation.certificat}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Tarif:  </strong></label>
+              <input *ngIf="updateformation" class="form-control" id="recipient-name" style="width: 50%;" [(ngModel)]="details_formation.tarif" (keydown.enter)="onKeyPress($event, 'tarif')">
+              <span *ngIf="!updateformation">{{' '+details_formation.tarif}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Support technique:  </strong></label>
+              <!-- <input class="form-control" id="recipient-name"> -->
+              <textarea *ngIf="updateformation" class="form-control" id="message-text" style="width: 50%;" [(ngModel)]="details_formation.support_technique" (keydown.enter)="onKeyPress($event, 'support_technique')"></textarea>
+              <span *ngIf="!updateformation">{{' '+details_formation.support_technique}}</span>
+            </div>
+          </div>
+          <!-- <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Statut:  </strong></label>
+              
+              <span>{{' '+details_formation.statut}}</span>
+            </div>
+          </div> -->
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Objectifs:  </strong></label>
+              <!-- <input class="form-control" id="recipient-name"> -->
+              <span>{{' '+(details_formation.objectifs)}}</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div style="padding: 10px;">
+              <label for="message-text" class="col-form-label"><strong>Materiels:  </strong></label>
+              <!-- <input class="form-control" id="recipient-name"> -->
+              <span>{{' '+details_formation.materiels}}</span>
+            </div>
+            <div class="mb-3">
+              <div style="padding: 10px;">
+                <label for="message-text" class="col-form-label"><strong>Prerequis:  </strong></label>
+                <!-- <input class="form-control" id="recipient-name"> -->
+                <span>{{' '+details_formation.prerequis}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bloc Modules -->
+        <div style="background-color: aliceblue; padding: 20px;" *ngIf="menuconfig==='module'">
+         
+        </div>
+        <!-- Bloc Cours -->
+        <div style="background-color: aliceblue; padding: 20px;" *ngIf="menuconfig==='cours' || menuconfig==='ajoutcours' ">
+          <div style="text-align: center;">
+            <h4>Cours</h4>
+            <h3 *ngIf="menuconfig==='ajoutcours'">Module: {{details_module}} </h3>
+          </div>
+          <div class="row" *ngIf="menuconfig==='ajoutcours'">
+            <div class="col-md-6">
+              <div  style="padding: 20px;">
+                <!-- <h3>Module: {{details_module}} </h3> -->
+                <div>
+                  <div class="mb-3">
+                    <div style="background-color: white; padding: 10px;">
+                      <label for="message-text" class="col-form-label"><strong>Selectionner la video du cours  </strong></label>
+                      <input class="form-control" type="file" (change)="onFileSelected($event)" />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <div style="background-color: white; padding: 10px;">
+                      <label for="message-text" class="col-form-label"><strong>Description du cours  </strong></label>
+                      <textarea class="form-control" id="message-text" [(ngModel)]="cours.description" ></textarea>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                    <button *ngIf="selectedFile" class="btn btn-danger " (click)="uploadVideo()">Envoyer la video</button>
+                    <button *ngIf="!selectedFile" class="btn btn-danger " disabled>Envoyer la video</button>
+                    </div>
+                    <div class="col-md-6" *ngIf="uploadProgress$ | async as progress">
+                      <p>Progression : {{ progress }}%</p>
+                      <progress value="{{ progress }}" max="100"></progress>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <!-- <h3>Module: {{details_module}} </h3> -->
+                <h3>listes des cours </h3>
+                <div *ngIf="tab_cours.length">
+                  <div *ngFor="let item of tab_cours">
+                    <h5>Cours {{item.ordre}}: {{item.titre}}</h5>
+                  </div>  
+                </div>
+                <div style="margin-top: 20px;" *ngIf="!tab_cours.length">
+                  <span>AUCUN COURS AJOUTER</span>
+                </div>
+                
+            </div>
+          </div>
+          <div *ngIf="menuconfig==='cours'" class="row" style="padding: 20px;">
+            <div class="card" style="width: 18rem; margin-top: 10px; margin-left: 10px;" *ngFor="let item of details_formation.modules, let i = index">
+              <div class="card-body">
+                <h5 class="card-title">{{item}}</h5>
+                <a class="btn btn-outline-warning" href="javascript:void(0)" (click)="configCours(item)">
+                  <i class="bi bi-file-plus"></i>
+                  cours
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     
